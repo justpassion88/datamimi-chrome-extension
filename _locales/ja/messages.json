@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "DataMimi – 無料の PDF・Excel ツール"
+  },
+  "description": {
+    "message": "PDF の結合・圧縮・変換、Excel の整理と結合、データについて AI に質問。無料、アカウント不要。"
+  },
+  "actionTitle": {
+    "message": "DataMimi のツールを探す"
+  }
+}
