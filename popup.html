@@ -10,15 +10,26 @@
     <header>
       <img src="icons/32.png" width="22" height="22" alt="" />
       <strong>DataMimi</strong>
-      <a id="home" target="_blank" rel="noreferrer">datamimi.com</a>
+      <span id="account" class="account"></span>
     </header>
+
+    <form id="make" class="make">
+      <label for="job" id="makeTitle" class="make-title"></label>
+      <div class="make-row">
+        <textarea id="job" rows="3" maxlength="2000"></textarea>
+        <button id="go" type="submit"></button>
+      </div>
+    </form>
+
+    <nav id="tabs" class="tabs" role="tablist"></nav>
+
     <label class="search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-      <input id="q" type="search" autocomplete="off" autofocus />
+      <input id="q" type="search" autocomplete="off" />
     </label>
-    <nav id="kinds" role="tablist"></nav>
+    <nav id="kinds" class="kinds" role="tablist"></nav>
     <ul id="list"></ul>
-    <p id="none" hidden></p>
+    <div id="none" class="none" hidden></div>
     <footer>
       <a id="all" target="_blank" rel="noreferrer"></a>
       <span id="free"></span>

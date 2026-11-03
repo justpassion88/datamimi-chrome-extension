@@ -31,7 +31,7 @@
   box-sizing: border-box;
 }
 body {
-  width: 360px;
+  width: 380px;
   margin: 0;
   background: var(--bg);
   color: var(--ink);
@@ -46,14 +46,11 @@ header {
 header strong {
   font-size: 15px;
 }
-header a {
+.account {
   margin-left: auto;
-  color: var(--muted);
-  font-size: 12px;
-  text-decoration: none;
 }
-header a:hover {
-  color: var(--accent);
+.account a {
+  text-decoration: none;
 }
 .search {
   display: flex;
@@ -80,13 +77,13 @@ header a:hover {
   font: inherit;
   font-size: 13.5px;
 }
-nav {
+.kinds {
   display: flex;
   gap: 4px;
   margin: 10px 14px 6px;
   overflow-x: auto;
 }
-nav button {
+.kinds button {
   flex: none;
   height: 28px;
   padding: 0 10px;
@@ -98,7 +95,7 @@ nav button {
   font-weight: 600;
   cursor: pointer;
 }
-nav button[aria-selected="true"] {
+.kinds button[aria-selected="true"] {
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -141,7 +138,7 @@ li a:focus-visible {
   color: var(--muted);
   font-size: 12px;
 }
-#none {
+.none {
   margin: 12px 16px;
   color: var(--muted);
 }
@@ -160,6 +157,112 @@ footer a {
 footer span {
   color: var(--muted);
   font-size: 11.5px;
+}
+
+.chip {
+  display: inline-block;
+  max-width: 190px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chip.strong {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.make {
+  margin: 4px 14px 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.make-title {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--tone-violet);
+  font-weight: 700;
+  font-size: 13.5px;
+}
+.make-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.make textarea {
+  flex: 1;
+  min-width: 0;
+  resize: none;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+.make textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.make button {
+  flex: none;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.make button:hover {
+  opacity: 0.9;
+}
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 0 14px 8px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--line);
+}
+.tabs button {
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tabs button[aria-selected="true"] {
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.none .inline {
+  display: block;
+  margin-top: 8px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 [hidden] {
