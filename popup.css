@@ -49,6 +49,30 @@ header strong {
 .account {
   margin-left: auto;
 }
+.lang {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  cursor: pointer;
+}
+.lang:hover,
+.lang:focus-within {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+/* The choice is the whole round button; the list opens from it. */
+.lang select {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
 .account a {
   text-decoration: none;
 }

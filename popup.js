@@ -1,11 +1,11 @@
 // The popup: make a Mini-App from a sentence, open one of your own or one from the market, or find a free tool.
 // What it shows of the person comes from datamimi.com with the site's own cookies; nothing else is read or sent.
 
-import { pickLang, siteUrl, WORDS } from "./strings.js";
+import { chosenLang, LANG_NAMES, LANGS, siteUrl, WORDS } from "./strings.js";
 import { TOOLS } from "./tools.js";
 
 const SITE = "https://datamimi.com";
-const lang = pickLang(chrome.i18n.getUILanguage());
+const lang = await chosenLang();
 const words = WORDS[lang];
 const tools = TOOLS[lang] ?? TOOLS.en;
 const home = lang === "en" ? "/" : `/${lang}`;
@@ -18,6 +18,21 @@ $("free").textContent = words.free;
 $("makeTitle").textContent = words.makeTitle;
 $("job").placeholder = words.makeHint;
 $("go").textContent = words.makeGo;
+
+// The language, changed by hand: kept for the popup and the right-click menu (background.js follows it).
+$("lang").replaceChildren(
+  ...LANGS.map((code) => {
+    const option = document.createElement("option");
+    option.value = code;
+    option.textContent = LANG_NAMES[code];
+    option.selected = code === lang;
+    return option;
+  }),
+);
+$("lang").addEventListener("change", async (event) => {
+  await chrome.storage.local.set({ lang: event.target.value });
+  window.location.reload();
+});
 
 const TABS = ["tools", "mine", "market"];
 const KINDS = ["popular", "pdf", "excel", "ai", "calc"];

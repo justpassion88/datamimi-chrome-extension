@@ -21,11 +21,11 @@ Everything opens on datamimi.com in a new tab. The PDF and Excel tools need no a
 
 **More:** [business calculators](https://datamimi.com/calculators), the [Mini-App maker](https://datamimi.com/make), and an [AI analyst](https://datamimi.com/ai) that answers questions about your spreadsheet.
 
-The extension works in English, Español, Português, Français, Deutsch, Bahasa Indonesia, Tiếng Việt and 日本語, following your browser's language.
+The extension works in English, Español, Português, Français, Deutsch, Bahasa Indonesia, Tiếng Việt and 日本語: your browser's language at first, or the one you pick with the globe button in the popup.
 
 ## Privacy
 
-- **Permissions:** `contextMenus` for the right-click menu, and access to `datamimi.com` only.
+- **Permissions:** `contextMenus` for the right-click menu, `storage` to remember the language chosen in the popup, and access to `datamimi.com` only.
 - **What it asks datamimi.com:** when the popup opens, it reads the Mini-App market, and, with the cookies you already have on datamimi.com, whether you are signed in, your plan, credits and the list of your Mini-Apps. It reads nothing from other sites and nothing from the pages you visit.
 - **What it sends:** nothing, until you press **Make it**: then the sentence you typed opens on datamimi.com in a new tab.
 - **No remote code:** the code ships in the extension; only data is fetched.

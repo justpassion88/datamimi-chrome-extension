@@ -1,7 +1,7 @@
 // The right-click menu: on a link to a PDF or a spreadsheet, the DataMimi tools for it; anywhere else, the tool finder.
 // Nothing is read from the page and nothing is sent anywhere: a choice opens datamimi.com in a new tab.
 
-import { pickLang, siteUrl, WORDS } from "./strings.js";
+import { chosenLang, siteUrl, WORDS } from "./strings.js";
 import { TOOLS } from "./tools.js";
 
 const PDF_LINKS = ["*://*/*.pdf", "*://*/*.PDF", "*://*/*.pdf?*"];
@@ -16,8 +16,8 @@ function hrefFor(lang, id) {
 const PDF = { compress: "/compress-pdf", word: "/pdf-to-word", merge: "/merge-pdf", split: "/split-pdf" };
 const SHEET = { merge: "/tools/merge-excel-files", clean: "/tools/clean-messy-spreadsheet", pivot: "/tools/pivot-table-online", ai: "/ai" };
 
-function build() {
-  const lang = pickLang(chrome.i18n.getUILanguage());
+async function build() {
+  const lang = await chosenLang();
   const words = WORDS[lang];
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({ id: "pdf", title: words.menu, contexts: ["link"], targetUrlPatterns: PDF_LINKS });
@@ -34,9 +34,13 @@ function build() {
 
 chrome.runtime.onInstalled.addListener(build);
 chrome.runtime.onStartup.addListener(build);
+// The language changed in the popup: the menu follows.
+chrome.storage.onChanged.addListener((changes) => {
+  if (changes.lang) void build();
+});
 
-chrome.contextMenus.onClicked.addListener((info) => {
-  const lang = pickLang(chrome.i18n.getUILanguage());
+chrome.contextMenus.onClicked.addListener(async (info) => {
+  const lang = await chosenLang();
   const [group, key] = String(info.menuItemId).split(":");
   let path = lang === "en" ? "/" : `/${lang}`;
   if (group === "pdf" && PDF[key]) path = hrefFor(lang, PDF[key]);

@@ -3,10 +3,24 @@
 
 export const LANGS = ["en", "es", "pt", "fr", "de", "id", "vi", "ja"];
 
+/** Each language by its own name, for the switch in the popup. */
+export const LANG_NAMES = { en: "English", es: "Español", pt: "Português", fr: "Français", de: "Deutsch", id: "Bahasa Indonesia", vi: "Tiếng Việt", ja: "日本語" };
+
 /** The browser's language, as one of ours; English otherwise. */
 export function pickLang(ui) {
   const base = String(ui || "en").toLowerCase().split(/[-_]/)[0];
   return LANGS.includes(base) ? base : "en";
+}
+
+/** The language chosen in the popup, else the browser's (owner, 2026-11-03: there was no way to change it). */
+export async function chosenLang() {
+  try {
+    const { lang } = await chrome.storage.local.get("lang");
+    if (LANGS.includes(lang)) return lang;
+  } catch {
+    /* No storage: the browser's language. */
+  }
+  return pickLang(chrome.i18n.getUILanguage());
 }
 
 export const WORDS = {

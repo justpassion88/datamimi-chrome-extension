@@ -25,7 +25,8 @@
     "type": "module"
   },
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "storage"
   ],
   "host_permissions": [
     "https://datamimi.com/*"
